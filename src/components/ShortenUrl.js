@@ -1,30 +1,39 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-
+import { shorten } from "../redux/reducers/urlSlice"
+import {getShortUrlByUrl} from "../services/urlService"
 
 const ShortenUrl = () => {
-  const [text, setText] = useState('')
+  const [urlName, setUrlName] = useState('')
   const dispatch = useDispatch()
 
   
-  const handleChange = e => setText(e.target.value)
-  //go to urls component 
-  const ShortenUrl = (text) =>{
-   
-  }
+  
  
+ 
+ const handleSubmit = (e) =>{
+    e.preventDefault();
+    getShortUrlByUrl(urlName).then((result) => {
+      console.log(result.full_short_link)
+      dispatch(shorten({
+         urlName:result.full_short_link
+      }))
+    });
+    
+ }
 
   return (
-      <div className='new-url-container'>
+      <div className='shorten-url-container'>
+         <form className='shorten_form' onSubmit={(e)=> handleSubmit(e)}>
+          <h1>here url</h1>
          <input
-            type="text"
+            type="urlName"
             placeholder="Shorten a link here..."
-            autoFocus={true}
-            value={text}
-            onChange={handleChange}
-             
+            value={urlName}
+            onChange={(e)=> setUrlName(e.target.value)}
          />
-         <button onClick={ShortenUrl}>  Shorten it!</button>
+         <button type="submit"  className='submit_shorten_btn'   >  Shorten it!</button>
+         </form>
       </div>
    
   )

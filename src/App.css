@@ -41,6 +41,9 @@
     transform: rotate(360deg);
   }
 }
-.new-url-container{
+.shorten-url-container{
+  margin: 300px;
+}
+.short-url-container{
   margin: 300px;
 }

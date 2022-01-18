@@ -10,10 +10,10 @@ import { GET_SHORT_URL } from "./CONSTANTS";
     return new Promise((resolve, reject) => {
       try {
         axios       
-        .get(GET_SHORT_URL("https://github.com/lucasaafr/circle-project-map/blob/feature/first-implementation-architecture/src/components/FieldQuestion.js"))
+        .get(GET_SHORT_URL(url))
         .then(res => {
-            resolve(res.result);
-            console.log('in service',res.result)
+            resolve(res.data.result);
+            console.log('in service',res.data.result)
         })
         .catch((err) => {
           console.log("get short url by url  > axios err=", err);
