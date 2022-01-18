@@ -11,8 +11,8 @@ const Urls = () =>{
   }
   const url = useSelector(selectUrl)
   return(
-    <div>
-      <h1> this is the short url <span className="short_url"> {url.urlName}</span></h1>
+    <div className="short-url-container" >
+      <h1> this is the short url :  <span className="short_url"> {url.urlName}</span></h1>
       <button className="copied_btn" onClick={(e)=> handleUrls(e)}> Copied </button>  
     </div>
   )
